@@ -256,20 +256,68 @@ echo "Suma de impares = $sumaImpares";
 Genera un número aleatorio entre 1 y 20. \
 Pide al usuario que lo adivine y usa un bucle con condicionales para dar pistas: "Mayor" o "Menor".
 ```php
+<?php
 
+$numero = rand(1,20);
+$desconocido = true;
+while ($adivinado) {
+    $respuesta = readline("ingresa un numero ");
+    if ($respuesta < $numero) {
+        echo "el numero ingresado es menor <br>";
+    } else if($respuesta > $numero){
+        echo "el numero ingresado es mayor <br>";
+    }
+    if ($respuesta == $numero) {
+        $desconocido = false;
+        break;
+    }
+}
+echo "adivinaste";
+
+?>
 ```
 
 ## Construcción de Algorítmicos
 ### 16.Número perfecto
 Comprueba si un número es perfecto (la suma de sus divisores propios es igual al número).
 ```php
+<?php
 
+$numero = 6;
+$sumaDivisores = 0;
+
+$mensaje = "$numero no es un numero perfecto.";
+
+for ($i = 1; $i <= $numero / 2; $i++) {
+	if ($numero % $i == 0) {
+		$sumaDivisores += $i;
+	}
+}
+
+if ($sumaDivisores == $numero) {
+	$mensaje =  "$numero es un número perfecto.";
+} 
+echo $mensaje;
+
+?>
 ```
 
 ### 17.Invertir número
 Escribe un algoritmo que invierta los dígitos de un número (ejemplo: 123 → 321).
 ```php
+<?php
 
+ $numero = 123; 
+ $invertido = 0;
+echo "$numero <br>";
+while ($numero > 0) {
+	$digito = $numero % 10;
+	$invertido= $invertido * 10 + $digito;
+	$numero = intdiv($numero, 10);
+}
+echo "$invertido";
+
+?>
 ```
 
 ### 18.Palíndromo
@@ -291,25 +339,41 @@ if ($palabraMinuscula === strrev($palabraMinuscula)) {
 ### 19.Máximo común divisor (MCD)
 Escribe un algoritmo que calcule el MCD de dos números.
 ```php
+<?php
 
+$a = 56;
+$b = 98;
+echo "$a <br> $b <br>";
+while ($b != 0) {
+	$temp = $b;
+	$b = $a % $b;
+	$a = $temp;
+}
+
+echo "El MCD es $a";
+
+?>
 ```
 
 ### 20.PTriángulo de asteriscos
 Muestra en pantalla un triángulo de altura n usando *. \
 Ejemplo con n = 5:
-```
-*
-**
-***
-****
-*****
-```
+
+    *
+    **
+    ***
+    ****
+    *****
 
 ```php
 <?php
 $numero = 5;
 for ($i = 1; $i <= $numero; $i++) {
-    echo str_repeat("*", $i) . "<br>";
+    $line = "";
+    for ($j = 1; $j <= $i; $j++) {
+        $line .= "*";
+    }
+    echo $line . "<br>";
 }
-?>
+?> 
 ```
