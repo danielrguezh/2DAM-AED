@@ -194,7 +194,21 @@ echo "El factorial de $numero es: $factorial";
 ### 11.Números primos
 Escribe un algoritmo que muestre los números primos entre 1 y 50.
 ```php
+<?php
 
+for ($i = 2; $i <= 50; $i++) {
+    $esPrimo = true;
+    for ($j = 2; $j < $i; $j++) {
+        if ($i % $j == 0) {
+            $esPrimo = false;
+            break;
+        }
+    }
+    if ($esPrimo) {
+        echo $i . "\n";
+    }
+}
+?>
 ```
 
 ### 12.Fibonacci
