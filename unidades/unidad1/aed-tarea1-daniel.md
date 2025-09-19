@@ -369,7 +369,7 @@ echo "El MCD es $a";
 ?>
 ```
 
-### 20.PTriángulo de asteriscos
+### 20.Triángulo de asteriscos
 Muestra en pantalla un triángulo de altura n usando *. \
 Ejemplo con n = 5:
 
