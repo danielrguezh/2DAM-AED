@@ -40,7 +40,35 @@ Implementa una función __montañaAsteriscos(int $n, $m): void__ que imprima una
 ```
 ---
 ```php
+<?php
+function montaniaAsteriscos(int $n, int $m): array {
+    $resultado = [];
 
+    for ($i = 1; $i <= $n; $i++) {
+        $line = "";
+        $spaces = str_repeat(" ", $n - $i);
+        $stars  = str_repeat("*", $i);
+
+        for ($j = 0; $j < $m; $j++) {
+            if ($j % 2 != 0) {
+                // alineado a la derecha
+                $line .= $spaces . $stars;
+            } else {
+                //  alineado a la izquierda
+                $line .= $stars . $spaces;
+            }
+        }
+
+        $resultado[] = $line;
+    }
+
+    return $resultado;
+}
+
+$montanias = montaniaAsteriscos(4, 4);
+
+echo "<pre>" . implode("\n", $montanias) . "</pre>";
+?>
 ```
 ## Suma de dígitos
 
@@ -116,5 +144,26 @@ Implementa una función __secuenciaCollatz(int $n): array__ que genere la secuen
 ```
 ---
 ```php
+<?php
+function secuenciaCollatz(int $n): array {
+    $secuencia=[];
+    array_push($secuencia, $n);
+    while($n != 1){
+        if($n%2==0){
+        	$n = intdiv($n,2);
+            array_push($secuencia, $n);
+        } else {
+        	$n = $n * 3 + 1;
+            array_push($secuencia, $n);
+        }
+    }
+    return $secuencia;
+}
 
+$numero = 6;
+$numeros=secuenciaCollatz($numero);
+foreach($numeros as $numero){
+    echo $numero . " ";
+}
+?> 
 ```
