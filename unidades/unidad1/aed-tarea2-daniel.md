@@ -6,6 +6,7 @@ Implementa una función __esCapicua(int $n): bool__ que determine si un número 
 - Un número es capicúa si se lee igual de izquierda a derecha que de derecha a izquierda.
 
 > Ejemplo: `12321` → `true`
+
 ---
 ```php
 <?php
