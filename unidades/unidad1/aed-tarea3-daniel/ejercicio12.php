@@ -6,26 +6,46 @@
  * @author danielrguezh
  * @version 1.0.0
  */
-function guardar(String $nombre,int $ranking){
-    $content=explode("\n",file_get_contents("resources/ejercicio12/ranking.txt"));
-    $listContent=[];
-    foreach ($content as $key => $value) {
-        $listContent[]=explode(":",$value);
-    }
-    $listContent[]=[$nombre," $ranking"];
-    $file=fopen("ranking.txt","w");
-    foreach ($listContent as $key => $value) {
-        for ($i=0; $i < 2; $i++) { 
-            if($i%2==0){
-                $value[$i]="$value[$i]:";
-            }
-             fwrite($file,$value[$i]);
-        }
-           fwrite($file,"\n");
+
+function guardarPuntuacion(array $juegos): void {
+    $path = "resources/ejercicio12/ranking.txt";
+    $file = fopen($path, "w");
+    foreach ($juegos as $juego => $puntuacion) {
+        fwrite($file, "$juego: $puntuacion\n");
     }
     fclose($file);
+} 
+
+function leerListaJuegos(): void {
+    $path = "resources/ranking.txt";
+    $lineas = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    $ranking = [];
+    foreach ($lineas as $linea) {
+        [$juego, $puntos] = explode(":", $linea);
+        $ranking[trim($juego)] = (int) trim($puntos);
+    }
+
+    // Ordenar de mayor a menor puntuación
+    arsort($ranking);
+
+    // Mostrar el top 3
+    $top = array_slice($ranking, 0, 3, true);
+    $pos = 1;
+    foreach ($top as $juego => $puntos) {
+        echo "$pos. $juego ($puntos puntos)\n";
+        $pos++;
+    }
 }
-    guardar("Fortnite",5);
-    guardar("The Witcher",7);
-    guardar("For honor",8);
+
+$juegos = [
+    "Zelda" => 10, 
+    "Sonic" => 8,
+    "Mario" => 9,
+    "For Honor" => 9
+];
+
+guardarPuntuacion($juegos);
+leerListaJuegos();
+
 ?>

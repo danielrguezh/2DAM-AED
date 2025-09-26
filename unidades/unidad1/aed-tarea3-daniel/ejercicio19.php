@@ -5,25 +5,32 @@
  * @author danielrguezh
  * @version 1.0.0
  */
+
 function crearTwitt($entrada){
    $rutaArchivo = "resources/ejercicio19/tweets.txt";
    $archivo = fopen($rutaArchivo, "a");
 
    $fechaActual = date('[Y-m-d H:i:s]');
-   $entradaFormato = "$fechaActual $entrada \n";
+   $entradaFormato = "$fechaActual $entrada\n";
 
-   fwrite($archivo, "$entradaFormato");
-
-   echo file_get_contents($rutaArchivo);
+   fwrite($archivo, $entradaFormato);
    fclose($archivo);
+
 }
 
-function mostrarUltimosTwitts(){
-    $twitts= explode("\n",file_get_contents("resources/ejercicio19/tweets.txt"));
-    for ($i=sizeof($twitts)-1; $i >= sizeof($twitts)-5; $i--) { 
-        pprint($twitts[$i]);
+function mostrarUltimosTwitts($n = 5){
+    $contenido = file_get_contents("resources/ejercicio19/tweets.txt");
+    $twitts = array_filter(explode("\n", $contenido));
+
+    
+    $ultimos = array_slice($twitts, -$n);
+
+    echo " Últimos $n twitts:\n";
+    foreach (array_reverse($ultimos) as $twitt) {
+        echo $twitt . "\n";
     }
 }
-crearTwitt("Hola, estoy programando otra vez");
 
+crearTwitt("Hola, estoy programando otra vez");
+mostrarUltimosTwitts();
 ?>
