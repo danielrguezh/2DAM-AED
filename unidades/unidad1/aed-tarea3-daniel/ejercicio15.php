@@ -6,18 +6,22 @@
  * @version 1.0.0
  */
 
-$file="resources/ejercicio15/chistes.txt";
 
-//function chisteRandom(): string{
-   $content
-   //if(!file_exists(filename: $file)){
-    //    return [];
-    // }
-   //$content=explode(separator: "\n",string: file_get_contents(filename: $file));
+$content=explode("\n",file_get_contents("resources/ejercicio15/chistes.txt"));
 
-   //$index=array_rand(array: $content);
-   //return $content[$index];
-//}
+function chisteRandom(): string{
+    while(sizeof($content)>0){
+        shuffle($content);
+        $random=$content[sizeof($content)-1];
+        array_pop($content);
+        return $random;
+    }
+    
+}
 
-//echo chisteRandom();
+echo chisteRandom();
+echo "\n";
+echo chisteRandom();
+echo "\n";
+echo chisteRandom();
 ?>
