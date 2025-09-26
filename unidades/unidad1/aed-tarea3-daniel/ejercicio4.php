@@ -12,7 +12,7 @@ $file=fopen("resources/ejercicio4/nombres.txt","w+r");
 foreach ($nombres as $key => $value) {
     fwrite($file,"$value \n");
 }
-$nombres=file_get_contents("resources/ejercicio4/nombres.tx");
+$nombres=file_get_contents("resources/ejercicio4/nombres.txt");
 return $nombres;
 }
 echo crearLeer(["Ana","Luis","Marta","Carlos","Julia"]);

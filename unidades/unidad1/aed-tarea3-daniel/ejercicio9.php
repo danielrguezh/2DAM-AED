@@ -7,15 +7,16 @@
  * @author danielrguezh
  * @version 1.0.0
  */
-function registrarEntrada(){
-    $rutaArchivo = "resources/ejercicio9/usuarios.txt";
-    $archivo = fopen($rutaArchivo, "w");
-    foreach ($nombres as $key => $value) {
-        fwrite($file,"$value \n");
+    function guardarLeerUsuarios(array $usuarios): string {
+        $file = fopen("resources/ejercicio9/usuarios.txt", "w+r");
+        foreach ($usuarios as $usuario) { 
+            fwrite($file, "$usuario\n");
+        }
+        $usuarios = file_get_contents("resources/ejercicio9/usuarios.txt");
+        return $usuarios;
     }
-    $nombres=file_get_contents($rutaArchivo);
-    return $nombres;
-}
-echo crearLeer(["Ana", "Pedro", "Lucia"]);
+
+    $usuarios = ["Ana","Pedro","Lucía"];
+    echo guardarLeerUsuarios($usuarios);
 
 ?>

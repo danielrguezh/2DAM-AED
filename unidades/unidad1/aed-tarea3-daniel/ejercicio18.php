@@ -39,7 +39,7 @@ function mostrarRankingDesdeArchivo(string $archivo): void {
     }
 }
 
-$comida = readline("Agregue su comida favorita ");
+$comida = readline("Agregue su comida favorita: ");
 agregarComida($archivo, $comida);
 mostrarRankingDesdeArchivo($archivo);
 

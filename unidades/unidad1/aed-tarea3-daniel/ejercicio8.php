@@ -1,6 +1,8 @@
 <?php
 /**
- * 
+ * 8) Crear fichero de multiplicaciones
+ * Enunciado: Genera la tabla del 5 y guárdala en tabla5.txt. Luego muéstrala.
+ * Funciones sugeridas: fopen, fwrite, file
  * @author danielrguezh
  * @version 1.0.0
  */
