@@ -16,9 +16,9 @@ function guardarPuntuacion(array $juegos): void {
     fclose($file);
 } 
 
-function leerListaJuegos(): void {
-    $path = "resources/ranking.txt";
-    $lineas = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+function leer3Mejores(): void {
+    $path = "resources/ejercicio12/ranking.txt";
+    $lineas = file($path);
 
     $ranking = [];
     foreach ($lineas as $linea) {
@@ -26,15 +26,12 @@ function leerListaJuegos(): void {
         $ranking[trim($juego)] = (int) trim($puntos);
     }
 
-    // Ordenar de mayor a menor puntuación
     arsort($ranking);
-
-    // Mostrar el top 3
-    $top = array_slice($ranking, 0, 3, true);
-    $pos = 1;
+    $top = array_slice($ranking, 0, 3);
+    $posicion = 1;
     foreach ($top as $juego => $puntos) {
-        echo "$pos. $juego ($puntos puntos)\n";
-        $pos++;
+        echo "$posicion. $juego ($puntos puntos)\n";
+        $posicion++;
     }
 }
 
@@ -46,6 +43,6 @@ $juegos = [
 ];
 
 guardarPuntuacion($juegos);
-leerListaJuegos();
+leer3Mejores();
 
 ?>

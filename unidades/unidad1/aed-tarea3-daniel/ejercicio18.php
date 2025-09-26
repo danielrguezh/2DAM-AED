@@ -5,21 +5,42 @@
  * @author danielrguezh
  * @version 1.0.0
  */
-function guardarCanciones(array $canciones): void {
-    $file = fopen("resources/ejercicio18/canciones.txt", "w");
-    foreach ($canciones as $cancion) {
-        fwrite($file, "$cancion\n");
+$archivo = "resources/ejercicio18/comidas.txt";
+
+function agregarComida(string $archivo, string $comida): void {
+    $comida = trim($comida);
+    if ($comida === "") return;
+    file_put_contents($archivo, $comida . PHP_EOL, FILE_APPEND);
+}
+
+function mostrarRankingDesdeArchivo(string $archivo): void {
+    if (!file_exists($archivo)) {
+        echo "El archivo no existe.\n";
+        return;
+    }
+
+    $lineas = file($archivo);
+    $ranking = [];
+    foreach ($lineas as $linea) {
+        $comida = trim($linea);
+        if ($comida === "") continue;
+        if (isset($ranking[$comida])) {
+            $ranking[$comida]++;
+        } else {
+            $ranking[$comida] = 1;
+        }
+    }
+
+    arsort($ranking);
+    $posicion = 1;
+    foreach ($ranking as $comida => $veces) {
+        echo "$posicion. $comida: $veces\n";
+        $posicion++;
     }
 }
 
-function obtenerCancionRandom(): string {
-    $file = file_get_contents("resources/ejercicio18/canciones.txt");
-    $canciones = explode("\n", $file);
-    $index = array_rand($canciones);
-    return $canciones[$index];
-}
+$comida = readline("Agregue su comida favorita ");
+agregarComida($archivo, $comida);
+mostrarRankingDesdeArchivo($archivo);
 
-$canciones = ["Hysteria", "Bohemian Rhapsody", "Africa"];
-guardarCanciones($canciones);
-echo obtenerCancionRandom();
 ?>

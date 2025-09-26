@@ -6,22 +6,21 @@
  * @version 1.0.0
  */
 
+$content = explode("\n", file_get_contents("resources/ejercicio15/chistes.txt"));
 
-$content=explode("\n",file_get_contents("resources/ejercicio15/chistes.txt"));
+function chisteRandom(): string {
+    global $content;
 
-function chisteRandom(): string{
-    while(sizeof($content)>0){
-        shuffle($content);
-        $random=$content[sizeof($content)-1];
-        array_pop($content);
-        return $random;
+    if (empty($content)) {
+        return null;
     }
-    
-}
 
-echo chisteRandom();
-echo "\n";
-echo chisteRandom();
-echo "\n";
-echo chisteRandom();
+    $index = array_rand($content);
+    $chiste = $content[$index];
+    unset($content[$index]);
+    return $chiste;
+}
+for ($i=0; $i=sizeof($content);$i++){
+    echo chisteRandom() . "\n";
+}
 ?>
