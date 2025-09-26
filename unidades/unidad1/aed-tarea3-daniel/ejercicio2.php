@@ -7,10 +7,11 @@
  * @author danielrguezh
  * @version 1.0.0
  */
-    //try{
-        $file = fopen("resources/numeros.txt", "w");
-        if(!$file){
-            throw new Exception("Archivo no encontrado.");
-        }
-    //}
+
+$file=fopen("resources/ejercicio2/numeros.txt","w");
+for ($i=1; $i < 11; $i++) { 
+   fwrite($file,"$i\n");
+ 
+}
+fclose($file);
 ?>

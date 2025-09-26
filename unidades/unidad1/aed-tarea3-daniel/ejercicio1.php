@@ -7,6 +7,6 @@
  * @author danielrguezh
  * @version 1.0.0
  */
-    file_put_contents("resources/datos.txt", "Hola Mundo desde PHP");
-    echo file_get_contents("resources/datos.txt");
+    file_put_contents("resources/ejercicio1/datos.txt", "Hola Mundo desde PHP");
+    echo file_get_contents("resources/ejercicio1/datos.txt");
 ?>
