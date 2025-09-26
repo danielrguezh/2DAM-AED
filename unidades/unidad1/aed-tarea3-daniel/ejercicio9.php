@@ -8,16 +8,14 @@
  * @version 1.0.0
  */
 function registrarEntrada(){
-    $arrayNombres = ["Ana", "Pedro", "Lucia"];
     $rutaArchivo = "resources/ejercicio9/usuarios.txt";
     $archivo = fopen($rutaArchivo, "w");
-    for ($i = 0; $i <= sizeof($arrayNombres)-1; $i++){
-    fwrite($archivo, "$arrayNombres[$i] \n");
+    foreach ($nombres as $key => $value) {
+        fwrite($file,"$value \n");
     }
-
-    echo file_get_contents($rutaArchivo);
-    fclose($archivo);
+    $nombres=file_get_contents($rutaArchivo);
+    return $nombres;
 }
+echo crearLeer(["Ana", "Pedro", "Lucia"]);
 
-registrarEntrada();
 ?>

@@ -11,6 +11,5 @@ $contenido=file_get_contents($file);
 echo $contenido;
 $contenido=explode(",",$contenido);
      
-echo "\n"; 
-echo  array_sum($contenido);
+echo "\n" . array_sum($contenido);
 ?>

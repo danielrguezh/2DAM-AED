@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
     function diario($entrada){
-        $rutaArchivo = "resources/diario.txt";
+        $rutaArchivo = "resources/ejercicio11/diario.txt";
         $archivo = fopen($rutaArchivo, "a");
 
         $fechaActual = date('[Y-m-d H:i:s]');
@@ -19,5 +19,5 @@
         fclose($archivo);
    }
 
-   diario("Hola mundo, soy un programador");
+   diario("Hola, estoy programando");
 ?>

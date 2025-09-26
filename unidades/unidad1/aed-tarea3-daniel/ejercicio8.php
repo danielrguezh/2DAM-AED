@@ -11,7 +11,7 @@ function tablaGuardar(int $n){
        fwrite($file,"$n x $i = $multiplicacion  \n");
     }
     fclose($file);
-    return explode("  ",file_get_contents("resources/ejercicio8/tabla5.tx"));
+    return explode("  ",file_get_contents("resources/ejercicio8/tabla5.txt"));
 }
 
 $tablas=tablaGuardar(5);
