@@ -1,0 +1,7 @@
+z1,z2,op,resultado
+3,1,resta,2
+5,4,suma,9
+5,2,producto,10
+7,0,producto,0
+10,3,division,3.3333333333333
+8,0,division,ERROR
