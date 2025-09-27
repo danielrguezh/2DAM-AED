@@ -78,13 +78,43 @@ escribir($arrayArchivo);
 ?>
 ```
 
+```text
+rsultado.csv
+
+z1,z2,op,resultado
+3,1,resta,2
+5,4,suma,9
+5,2,producto,10
+7,0,producto,0
+10,3,division,3.3333333333333
+8,0,division,ERROR
+
+```
+
 ---
 
-## Archivos esperados
+- **Entrada:** `ops.csv`
+```
+z1,z2,op
+3,1,resta
+5,4,suma
+5,2,producto
+7,0,producto
+10,3,division
+8,0,division
+```
 
-- **Entrada:** `ops.csv`  
 - **Salida:** `resultado.csv`  
+```
+z1,z2,op,resultado
+3,1,resta,2
+5,4,suma,9
+5,2,producto,10
+7,0,producto,0
+10,3,division,3.3333333333333
+8,0,division,ERROR
 
+```
 ---
 
 ## Ejemplo de ejecución
@@ -199,7 +229,26 @@ potente,1
 y,1
 ```
 
+---
+```php
+<?php
+ $contenido = file_get_contents("resources/ejercicio2/texto.txt");
 
-## Referencias
+function contarPalabras($contenido) : void {
+    $contenido = strtolower($contenido);
+    $contenido = preg_replace("/[[:punct:]]/u", " ", $contenido);
 
-- https://doc.php.net/archives/php5/php_manual_en.tar.gz
+    $palabras = preg_split('/\s+/', $contenido, -1, PREG_SPLIT_NO_EMPTY);
+    $frecuencias = array_count_values($palabras);
+
+    $file = fopen("resources/ejercicio2/estadisticas.csv", "w");
+    fwrite($file, "palabra,frecuencia\n");
+    foreach ($frecuencias as $palabra => $frecuencia) {
+        fwrite($file, "$palabra,$frecuencia\n");
+    }
+    fclose($file);
+}
+
+contarPalabras($contenido);
+?>
+```
