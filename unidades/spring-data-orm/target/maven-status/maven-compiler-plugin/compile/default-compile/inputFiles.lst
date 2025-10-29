@@ -1,0 +1,11 @@
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/Main.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/files/model/Note.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/repo/FileNoteAbstractRepository.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/repo/FileNoteJsonRepository.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/repo/FileNoteRepository.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/repo/FileNoteXmlRepository.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/repo/INoteRepository.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/service/IServiceNote.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/service/JsonServiceNote.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/service/ServiceNoteAbstract.java
+/home/super/Descargas/ficheros-jackson/src/main/java/com/docencia/service/XmlServiceNote.java
