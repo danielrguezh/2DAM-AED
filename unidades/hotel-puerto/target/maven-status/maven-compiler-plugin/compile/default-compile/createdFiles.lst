@@ -1,0 +1,5 @@
+com/docencia/Application.class
+com/docencia/repo/jpa/INoteJpaRepository.class
+com/docencia/repo/jpa/NoteJpaRepository.class
+com/docencia/repo/INoteRepository.class
+com/docencia/model/Note.class
