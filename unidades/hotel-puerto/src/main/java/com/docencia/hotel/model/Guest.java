@@ -1,10 +1,15 @@
 package com.docencia.hotel.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.Objects;
 
 /**
  * @author danielrguezh
@@ -14,23 +19,28 @@ import java.util.Objects;
 @Entity
 @Table(name = "guest")
 public class Guest {
+
     @Id
     @Column(name = "id")
     private String id;
-    
-    @Column(name = "full_name")
+
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
 
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Booking> bookings;
+
     /**
-     * Constructor vacio
+     * Constructor por defecto
      */
     public Guest() {
+        this.bookings = new ArrayList<>();
     }
 
     /**
@@ -47,6 +57,7 @@ public class Guest {
      * @param fullName
      * @param email
      * @param phone
+     * @param bookings
      */
     public Guest(String id, String fullName, String email, String phone) {
         this.id = id;
@@ -56,7 +67,7 @@ public class Guest {
     }
 
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -64,7 +75,7 @@ public class Guest {
     }
 
     public String getFullName() {
-        return this.fullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
@@ -72,7 +83,7 @@ public class Guest {
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -80,12 +91,13 @@ public class Guest {
     }
 
     public String getPhone() {
-        return this.phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -95,22 +107,11 @@ public class Guest {
             return false;
         }
         Guest guest = (Guest) o;
-        return Objects.equals(id, guest.id) && Objects.equals(fullName, guest.fullName) && Objects.equals(email, guest.email) && Objects.equals(phone, guest.phone);
+        return Objects.equals(id, guest.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, email, phone);
+        return Objects.hash(id);
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", fullName='" + getFullName() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phone='" + getPhone() + "'" +
-            "}";
-    }
-    
 }

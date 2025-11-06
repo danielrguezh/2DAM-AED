@@ -1,10 +1,14 @@
 package com.docencia.hotel.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.util.Objects;
 
 /**
  * @author danielrguezh
@@ -14,24 +18,27 @@ import java.util.Objects;
 @Entity
 @Table(name = "booking")
 public class Booking {
+
     @Id
     @Column(name = "id")
     private String id;
 
-    @Column(name = "room_id")
-    private String roomId;
-
-    @Column(name = "guest_id")
-    private String guestId;
-
-    @Column(name = "check_in")
+    @Column(name = "check_in", nullable = false)
     private String checkIn;
 
-    @Column(name = "check_out")
+    @Column(name = "check_out", nullable = false)
     private String checkOut;
 
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "guest_id", nullable = false)
+    private Guest guest;
+
     /**
-     * Constructor vacio
+     * Constructor por defecto
      */
     public Booking() {
     }
@@ -54,38 +61,20 @@ public class Booking {
      */
     public Booking(String id, String roomId, String guestId, String checkIn, String checkOut) {
         this.id = id;
-        this.roomId = roomId;
-        this.guestId = guestId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
 
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getRoomId() {
-        return this.roomId;
-    }
-
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
-    }
-
-    public String getGuestId() {
-        return this.guestId;
-    }
-
-    public void setGuestId(String guestId) {
-        this.guestId = guestId;
-    }
-
     public String getCheckIn() {
-        return this.checkIn;
+        return checkIn;
     }
 
     public void setCheckIn(String checkIn) {
@@ -93,11 +82,27 @@ public class Booking {
     }
 
     public String getCheckOut() {
-        return this.checkOut;
+        return checkOut;
     }
 
     public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
     }
 
     @Override
@@ -108,23 +113,11 @@ public class Booking {
             return false;
         }
         Booking booking = (Booking) o;
-        return Objects.equals(id, booking.id) && Objects.equals(roomId, booking.roomId) && Objects.equals(guestId, booking.guestId) && Objects.equals(checkIn, booking.checkIn) && Objects.equals(checkOut, booking.checkOut);
+        return Objects.equals(id, booking.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roomId, guestId, checkIn, checkOut);
+        return Objects.hash(id);
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", roomId='" + getRoomId() + "'" +
-            ", guestId='" + getGuestId() + "'" +
-            ", checkIn='" + getCheckIn() + "'" +
-            ", checkOut='" + getCheckOut() + "'" +
-            "}";
-    }
-    
 }

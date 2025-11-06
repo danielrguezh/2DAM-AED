@@ -1,10 +1,18 @@
 package com.docencia.hotel.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.Objects;
 
 /**
  * @author danielrguezh
@@ -12,29 +20,36 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "hotel")
+@Table(name = "room")
 public class Room {
+
     @Id
     @Column(name = "id")
     private String id;
 
-    @Column(name = "number")
+    @Column(name = "number", nullable = false)
     private String number;
-    
-    @Column(name = "type")
+
+    @Column(name = "type", nullable = false)
     private String type;
 
-    @Column(name = "prince_per_night")
-    private float princePerNight;
+    @Column(name = "price_per_night", nullable = false)
+    private float pricePerNight;
 
-    @Column(name = "hotel_id")
-    private String hotelId;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotel_id", nullable = false)
+    private Hotel hotel;
+
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Booking> bookings;
 
     /**
-     * Constructor vacio
+     * Constructor por defecto
      */
     public Room() {
+        this.bookings = new ArrayList<>();
     }
+
     /**
      * Constructor con identificador
      * @param id
@@ -48,19 +63,20 @@ public class Room {
      * @param id
      * @param number
      * @param type
-     * @param princePerNight
-     * @param hotelId
+     * @param pricePerNight
+     * @param hotel
      */
-    public Room(String id, String number, String type, float princePerNight, String hotelId) {
+    public Room(String id, String number, String type, float pricePerNight, Hotel hotel) {
         this.id = id;
         this.number = number;
         this.type = type;
-        this.princePerNight = princePerNight;
-        this.hotelId = hotelId;
+        this.pricePerNight = pricePerNight;
+        this.hotel = hotel;
     }
 
+    
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -68,7 +84,7 @@ public class Room {
     }
 
     public String getNumber() {
-        return this.number;
+        return number;
     }
 
     public void setNumber(String number) {
@@ -76,27 +92,27 @@ public class Room {
     }
 
     public String getType() {
-        return this.type;
+        return type;
     }
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public float getPrincePerNight() {
-        return this.princePerNight;
+    public float getPricePerNight() {
+        return pricePerNight;
     }
 
-    public void setPrincePerNight(float princePerNight) {
-        this.princePerNight = princePerNight;
+    public void setPricePerNight(float pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
-    public String getHotelId() {
-        return this.hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(String hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     @Override
@@ -107,23 +123,11 @@ public class Room {
             return false;
         }
         Room room = (Room) o;
-        return Objects.equals(id, room.id) && Objects.equals(number, room.number) && Objects.equals(type, room.type) && princePerNight == room.princePerNight && Objects.equals(hotelId, room.hotelId);
+        return Objects.equals(id, room.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, number, type, princePerNight, hotelId);
+        return Objects.hash(id);
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", number='" + getNumber() + "'" +
-            ", type='" + getType() + "'" +
-            ", princePerNight='" + getPrincePerNight() + "'" +
-            ", hotelId='" + getHotelId() + "'" +
-            "}";
-    }
-    
 }
