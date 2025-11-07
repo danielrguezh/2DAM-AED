@@ -16,3 +16,5 @@ spring:
       platform: sqlite
       schema-locations: classpath:sqlite/schema.sql
       data-locations: classpath:sqlite/data.sql
+
+

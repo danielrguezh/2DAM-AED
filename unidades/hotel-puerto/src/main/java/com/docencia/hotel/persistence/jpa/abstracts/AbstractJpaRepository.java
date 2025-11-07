@@ -27,6 +27,7 @@ public abstract class AbstractJpaRepository<T, ID> implements ICrudRepository<T,
 
     @Override
     public T findById(ID id) {
+        
         return null;
     }
 
