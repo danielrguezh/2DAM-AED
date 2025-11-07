@@ -38,7 +38,7 @@ public class Booking {
     private Guest guest;
 
     /**
-     * Constructor por defecto
+     * Constructor por defecto  
      */
     public Booking() {
     }

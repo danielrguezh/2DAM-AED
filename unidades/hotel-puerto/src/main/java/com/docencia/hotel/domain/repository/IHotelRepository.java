@@ -1,6 +1,7 @@
 package com.docencia.hotel.domain.repository;
 
-import com.docencia.hotel.domain.repository.interfaces.ICrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import com.docencia.hotel.model.Hotel;
 
 /**
@@ -8,6 +9,7 @@ import com.docencia.hotel.model.Hotel;
  * @version 1.0.0
  */
 
-public interface IHotelRepository extends ICrudRepository<Hotel> {
+@Repository
+public interface IHotelRepository extends JpaRepository<Hotel, String> {
 
 }

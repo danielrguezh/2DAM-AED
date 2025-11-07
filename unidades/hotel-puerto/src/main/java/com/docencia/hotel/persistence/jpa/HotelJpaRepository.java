@@ -1,15 +1,15 @@
 package com.docencia.hotel.persistence.jpa;
-
-import com.docencia.hotel.domain.repository.IGuestRepository;
-import com.docencia.hotel.model.Guest;
-import com.docencia.hotel.persistence.jpa.abstracts.AbstractJpaRepository;
-
-import jakarta.transaction.Transactional;
-
 import java.util.List;
 import java.util.UUID;
 
+
 import org.springframework.stereotype.Repository;
+
+import com.docencia.hotel.domain.repository.IHotelRepository;
+import com.docencia.hotel.model.Hotel;
+import com.docencia.hotel.persistence.jpa.abstracts.AbstractJpaRepository;
+
+import jakarta.transaction.Transactional;
 
 /**
  * @author danielrguezh
@@ -17,15 +17,15 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public class GuestJpaRepository extends AbstractJpaRepository<Guest, String> {
+public class HotelJpaRepository extends AbstractJpaRepository<Hotel, String> {
 
-    private final IGuestRepository repository;
+    private final IHotelRepository repository;
 
     /**
      * Constructor por defecto
      */
-    public GuestJpaRepository(IGuestRepository repository) {
-        super(Guest.class);
+    public HotelJpaRepository(IHotelRepository repository) {
+        super(Hotel.class);
         this.repository = repository;
     }
 
@@ -35,22 +35,22 @@ public class GuestJpaRepository extends AbstractJpaRepository<Guest, String> {
     }
 
     @Override
-    public Guest findById(String id) {
+    public Hotel findById(String id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Guest> findAll() {
+    public List<Hotel> findAll() {
         return repository.findAll();
     }
 
     @Override
     @Transactional
-    public Guest save(Guest guest) {
-        if (guest.getId() == null || guest.getId().isBlank()) {
-            guest.setId(UUID.randomUUID().toString());
+    public Hotel save(Hotel hotel) {
+        if (hotel.getId() == null || hotel.getId().isBlank()) {
+            hotel.setId(UUID.randomUUID().toString());
         }
-        return repository.save(guest);
+        return repository.save(hotel);
     }
 
     @Override

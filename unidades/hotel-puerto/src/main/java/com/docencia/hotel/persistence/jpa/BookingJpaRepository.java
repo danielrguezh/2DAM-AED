@@ -5,8 +5,10 @@ import com.docencia.hotel.model.Booking;
 import com.docencia.hotel.persistence.jpa.abstracts.AbstractJpaRepository;
 import org.springframework.stereotype.Repository;
 
-import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
+
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author danielrguezh
@@ -14,24 +16,49 @@ import java.util.List;
  */
 
 @Repository
-public class BookingJpaRepository extends AbstractJpaRepository<Booking, String> implements IBookingRepository {
+public class BookingJpaRepository extends AbstractJpaRepository<Booking, String> {
+
+    private final IBookingRepository repository;
 
     /**
      * Constructor por defecto
      */
-    public BookingJpaRepository() { 
+    public BookingJpaRepository(IBookingRepository repository) { 
         super(Booking.class); 
+        this.repository = repository;
     }
 
     @Override
-    public List<Booking> findBookingsByRoomAndDateRange(String roomId, String fromInclusive, String toExclusive) {
-        String jpql = "SELECT b FROM Booking b WHERE b.room.id = :roomId "
-                    + "AND b.checkIn < :toExclusive AND b.checkOut > :fromInclusive "
-                    + "ORDER BY b.checkIn";
-        TypedQuery<Booking> querry = entityManager.createQuery(jpql, Booking.class);
-        querry.setParameter("roomId", roomId);
-        querry.setParameter("fromInclusive", fromInclusive);
-        querry.setParameter("toExclusive", toExclusive);
-        return querry.getResultList();
+    public boolean existsById(String id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public Booking findById(String id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Booking> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public Booking save(Booking booking) {
+        if (booking.getId() == null || booking.getId().isBlank()) {
+            booking.setId(UUID.randomUUID().toString());
+        }
+        return repository.save(booking);
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteById(String id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
     }
 }

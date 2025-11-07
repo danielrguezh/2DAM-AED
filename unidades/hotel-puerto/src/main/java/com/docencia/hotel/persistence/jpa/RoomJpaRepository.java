@@ -1,31 +1,31 @@
 package com.docencia.hotel.persistence.jpa;
 
-import com.docencia.hotel.domain.repository.IGuestRepository;
-import com.docencia.hotel.model.Guest;
-import com.docencia.hotel.persistence.jpa.abstracts.AbstractJpaRepository;
-
-import jakarta.transaction.Transactional;
-
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
+import com.docencia.hotel.domain.repository.IRoomRepository;
+import com.docencia.hotel.model.Room;
+import com.docencia.hotel.persistence.jpa.abstracts.AbstractJpaRepository;
+
+import jakarta.transaction.Transactional;
+
 /**
- * @author danielrguezh
+ * @author eduglezexp
  * @version 1.0.0
  */
 
 @Repository
-public class GuestJpaRepository extends AbstractJpaRepository<Guest, String> {
-
-    private final IGuestRepository repository;
+public class RoomJpaRepository extends AbstractJpaRepository<Room, String> {
+    
+    private final IRoomRepository repository;
 
     /**
      * Constructor por defecto
      */
-    public GuestJpaRepository(IGuestRepository repository) {
-        super(Guest.class);
+    public RoomJpaRepository(IRoomRepository repository) {
+        super(Room.class);
         this.repository = repository;
     }
 
@@ -35,22 +35,22 @@ public class GuestJpaRepository extends AbstractJpaRepository<Guest, String> {
     }
 
     @Override
-    public Guest findById(String id) {
+    public Room findById(String id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Guest> findAll() {
+    public List<Room> findAll() {
         return repository.findAll();
     }
 
     @Override
     @Transactional
-    public Guest save(Guest guest) {
-        if (guest.getId() == null || guest.getId().isBlank()) {
-            guest.setId(UUID.randomUUID().toString());
+    public Room save(Room room) {
+        if (room.getId() == null || room.getId().isBlank()) {
+            room.setId(UUID.randomUUID().toString());
         }
-        return repository.save(guest);
+        return repository.save(room);
     }
 
     @Override

@@ -11,6 +11,6 @@ import com.docencia.hotel.model.Booking;
  * @version 1.0.0
  */
 
-public interface IBookingRepository extends JpaRepository<> {
+public interface IBookingRepository extends JpaRepository<Booking, String> {
     List<Booking> findBookingsByRoomAndDateRange(String roomId, String fromInclusive, String toExclusive);
 }

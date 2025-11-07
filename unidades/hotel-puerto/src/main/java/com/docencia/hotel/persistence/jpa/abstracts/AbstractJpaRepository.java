@@ -5,46 +5,48 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import java.util.List;
 
+import com.docencia.hotel.persistence.interfaces.ICrudRepository;
+
 /**
  * @author danielrguezh
  * @version 1.0.0
  */
 
-public abstract class AbstractJpaRepository<T, ID> {
+public abstract class AbstractJpaRepository<T, ID> implements ICrudRepository<T, ID> {
 
-    @PersistenceContext
-    public EntityManager entityManager;
-
-    private final Class<T> entityClass;
-
-    public AbstractJpaRepository(Class<T> entityClass) {
-        this.entityClass = entityClass;
+    private final Class<T> repository;
+    
+    public AbstractJpaRepository(Class<T> repository) {
+        this.repository = repository;
     }
 
+    @Override
     public boolean existsById(ID id) {
-        return entityManager.find(entityClass, id) != null;
+        return false;
     }
 
+    @Override
     public T findById(ID id) {
-        return entityManager.find(entityClass, id);
+        return null;
     }
 
+    @Override
     public List<T> findAll() {
-        String querry = "SELECT e FROM " + entityClass.getSimpleName() + " e";
-        return entityManager.createQuery(querry, entityClass).getResultList();
+        return null;
     }
 
+    @Override
     @Transactional
     public T save(T entity) {
-        return entityManager.merge(entity);
+        return null;
     }
 
+    @Override
     @Transactional
     public boolean deleteById(ID id) {
         if (!existsById(id)) {
             return false;
         }
-        entityManager.remove(id);
         return true;
     }
 }
