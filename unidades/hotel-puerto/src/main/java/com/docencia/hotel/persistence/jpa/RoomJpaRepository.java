@@ -12,7 +12,7 @@ import com.docencia.hotel.persistence.jpa.abstracts.AbstractJpaRepository;
 import jakarta.transaction.Transactional;
 
 /**
- * @author eduglezexp
+ * @author danielrguezh
  * @version 1.0.0
  */
 
