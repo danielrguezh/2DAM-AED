@@ -1,0 +1,8 @@
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/repo/AlumnoRepository.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/repo/jpa/AlumnoJpaRepository.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/domain/Alumno.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/repo/jpa/AlumnoEntity.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/config/H2ServerConfig.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/DemoApplication.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/service/AlumnoService.java
+/home/dam/Escritorio/2DAM-AED/unidades/objetos-practica-starter/src/main/java/com/docencia/objetos/repo/AlumnoRepositoryJpaAdapter.java
