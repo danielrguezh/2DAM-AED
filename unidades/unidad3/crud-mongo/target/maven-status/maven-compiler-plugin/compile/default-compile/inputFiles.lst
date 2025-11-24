@@ -1,0 +1,8 @@
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/services/PersonaService.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/services/interfaces/IPersonaService.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/model/Direccion.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/repository/PersonaRepository.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/PersonasApplication.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/repository/RolRepository.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/model/Rol.java
+/home/dam/Escritorio/2DAM-AED/unidades/unidad3/crud-mongo/src/main/java/com/docencia/personas/model/Persona.java
