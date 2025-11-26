@@ -11,7 +11,7 @@ import com.docencia.rest.model.User;
 import jakarta.validation.Valid;
 
 public interface IUserService {
-List getAllUsers();
+List<User> getAllUsers();
 User getUserById(@PathVariable(value = "id") int userId) throws ResourceNotFoundException;
 User createUser(@Valid @RequestBody User user);
 User updateUser(@PathVariable(value = "id") int userId, @Valid @RequestBody User userDetails) throws ResourceNotFoundException;
