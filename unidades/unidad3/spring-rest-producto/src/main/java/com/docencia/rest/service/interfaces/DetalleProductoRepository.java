@@ -2,11 +2,13 @@ package com.docencia.rest.service.interfaces;
 
 import java.util.Optional;
 
-import com.docencia.rest.model.DetalleProcutoDocument;
-import com.docencia.rest.model.Producto;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface DetalleProductoRepository {
-    Optional<DetalleProcutoDocument> findByProductoId(int productoId);
-    Producto save(int productoId, DetalleProcutoDocument detalle);
-    void deleteByProductoId(int productoId);
+import com.docencia.rest.model.DetalleProcutoDocument;
+import com.docencia.rest.model.ProductoEntity;
+
+public interface DetalleProductoRepository extends MongoRepository <DetalleProcutoDocument,Integer>{
+    // Optional<DetalleProcutoDocument> findByProductoId(int productoId);
+    // ProductoEntity save(int productoId, DetalleProcutoDocument detalle);
+    // void deleteByProductoId(int productoId);
 }

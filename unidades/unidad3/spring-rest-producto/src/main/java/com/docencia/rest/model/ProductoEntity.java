@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 import jakarta.persistence.*;
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "productos")
-public class Producto {
+public class ProductoEntity {
     private int id;
 
     @Column(name = "nombre")
@@ -19,15 +20,14 @@ public class Producto {
     @Column(name = "stock")
     private int stock;
 
-
-    public Producto() {
+    public ProductoEntity() {
     }
 
-    public Producto(int id) {
+    public ProductoEntity(int id) {
         this.id = id;
     }    
 
-    public Producto(String nombre, BigDecimal precio, int stock) {
+    public ProductoEntity(String nombre, BigDecimal precio, int stock) {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -70,10 +70,10 @@ public class Producto {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Producto)) {
+        if (!(o instanceof ProductoEntity)) {
             return false;
         }
-        Producto producto = (Producto) o;
+        ProductoEntity producto = (ProductoEntity) o;
         return Objects.equals(id, producto.id);
     }
 

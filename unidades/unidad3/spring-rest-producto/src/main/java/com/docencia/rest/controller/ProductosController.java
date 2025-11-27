@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.docencia.rest.exception.ResourceNotFoundException;
-import com.docencia.rest.model.Producto;
+import com.docencia.rest.domain.Producto;
 import com.docencia.rest.service.ProductoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("api/v1/productos")
+@Tag(name = "Productos", description = "Operaciones sobre productos")
 public class ProductosController {
     private ProductoService productoService;
 
@@ -35,7 +37,7 @@ public class ProductosController {
 
     @Operation(summary = "Get all productos")
     @GetMapping("/")
-    public List<Producto> getAllProductos(){
+    public List<ProductoEntity> getAllProductos(){
         return productoService.findAll();
     }
 
@@ -45,8 +47,8 @@ public class ProductosController {
             @ApiResponse(responseCode = "404", description = "Producto not found")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> getProductoById(@PathVariable(value = "id") int productoId) throws ResourceNotFoundException{
-        Producto producto = productoService.findById(productoId).orElse(null);
+    public ResponseEntity<ProductoEntity> getProductoById(@PathVariable(value = "id") int productoId) throws ResourceNotFoundException{
+        ProductoEntity producto = productoService.findById(productoId).orElse(null);
         if (producto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -74,7 +76,7 @@ public class ProductosController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping("/add/user/")
-    public Producto createProducto(@Valid @RequestBody Producto producto) {
+    public ProductoEntity createProducto(@Valid @RequestBody ProductoEntity producto) {
         return productoService.save(producto);
     }
 }
