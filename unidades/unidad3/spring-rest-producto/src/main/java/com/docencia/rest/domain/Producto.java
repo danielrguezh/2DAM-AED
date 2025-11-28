@@ -27,6 +27,14 @@ public class Producto {
         this.stock = stock;
     }
 
+    public Producto(int id, String nombre, BigDecimal precio, int stock, DetalleProducto detalleProducto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.detalleProducto = detalleProducto;
+    }
+    
     public int getId() {
         return this.id;
     }
@@ -73,5 +81,12 @@ public class Producto {
     public int hashCode() {
         return Objects.hash(id);
     }
-    
+
+    public DetalleProducto getDetalleProducto() {
+        return this.detalleProducto;
+    }
+
+    public void setDetalleProducto(DetalleProducto detalleProducto) {
+        this.detalleProducto = detalleProducto;
+    }    
 }

@@ -37,7 +37,7 @@ public class ProductosController {
 
     @Operation(summary = "Get all productos")
     @GetMapping("/")
-    public List<ProductoEntity> getAllProductos(){
+    public List<Producto> getAllProductos(){
         return productoService.findAll();
     }
 
@@ -47,8 +47,8 @@ public class ProductosController {
             @ApiResponse(responseCode = "404", description = "Producto not found")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<ProductoEntity> getProductoById(@PathVariable(value = "id") int productoId) throws ResourceNotFoundException{
-        ProductoEntity producto = productoService.findById(productoId).orElse(null);
+    public ResponseEntity<Producto> getProductoById(@PathVariable(value = "id") int productoId) throws ResourceNotFoundException{
+        Producto producto = productoService.findById(productoId).orElse(null);
         if (producto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -76,7 +76,7 @@ public class ProductosController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping("/add/user/")
-    public ProductoEntity createProducto(@Valid @RequestBody ProductoEntity producto) {
+    public Producto createProducto(@Valid @RequestBody Producto producto) {
         return productoService.save(producto);
     }
 }
