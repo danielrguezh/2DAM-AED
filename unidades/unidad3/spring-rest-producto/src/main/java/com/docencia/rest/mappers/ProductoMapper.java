@@ -18,6 +18,6 @@ public interface ProductoMapper {
 
     // JPA + Mongo -> Dominio completo
     @Mapping(target = "id", source = "entity.id")
-    // @Mapping(target = "detalleProducto", source = "detalle")
+    @Mapping(target = "detalleProducto", source = "detalle")
     Producto toDomain(ProductoEntity entity, DetalleProcutoDocument detalle);
 }
