@@ -1,6 +1,6 @@
 <div align="justify">
 
-# Code & Learn (Práctica 1: Proyecto Tareas)
+# <img src=.../../../../../images/coding-book.png width="40"> Code & Learn (Práctica 1: Proyecto Tareas)
 
 Este ejercicio guiado está pensado como **tarea global** de la documentación de TypeScript que has ido trabajando.
 

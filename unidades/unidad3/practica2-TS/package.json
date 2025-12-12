@@ -1,0 +1,22 @@
+{
+  "name": "practica4-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "api": "json-server --watch db.json --port 3000",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "json-server": "^1.0.0-beta.3",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
