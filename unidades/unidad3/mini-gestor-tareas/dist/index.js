@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tareas_1 = require("./tareas");
+let tareas = [];
+tareas.push((0, tareas_1.crearTarea)(1, "Estudiar TypeScript"));
+tareas.push((0, tareas_1.crearTarea)(2, "Hacer la tarea global"));
+tareas.push((0, tareas_1.crearTarea)(3, "Descansar un rato"));
+tareas = (0, tareas_1.completarTarea)(tareas, 1);
+console.log("Todas:", tareas);
+console.log("Pendientes:", (0, tareas_1.filtrarTareas)(tareas, "pendientes"));
+console.log("Completadas:", (0, tareas_1.filtrarTareas)(tareas, "completadas"));
