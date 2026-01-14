@@ -10,12 +10,14 @@ export function normalizeBearer(authHeader: string): string {
     throw new Error();
   }
   
-  let palabras: Array<String> = authHeader.trim().split(/\s+/);
-  palabras[0].charAt(0).toUpperCase();
-  if(palabras)
-  let solucion: string  = palabras[0]+" "+palabras[1];
+  const palabras: Array<String> = authHeader.trim().split(/\s+/);
+  if (palabras[0].toLowerCase() !== "bearer" || palabras.length !== 2) {
+    throw new Error();
+  }
 
-  return palabras.toString();
+  palabras[0] = "Bearer";
+
+  return palabras.join(" ");
 }
 
 export function clamp01(value: number): number {

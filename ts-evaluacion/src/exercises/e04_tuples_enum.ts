@@ -10,15 +10,30 @@ export type JwtParts = [header: string, payload: string, signature: string];
 
 export function splitJwt(token: string): JwtParts {
   // "a.b.c" => [a,b,c] exactamente 3 partes, si no => Error
-  throw new Error("TODO");
+  const splitter: string[] = token.split(".");
+  if (splitter.length !== 3){
+    throw new Error("No coincide el numero de partes");
+  }
+  return [splitter[0], splitter[1], splitter[2]];
 }
 
 export function roleFromString(value: string): Role {
   // "ADMIN"|"USER" (case-insensitive) => Role; si no => Error
-  throw new Error("TODO");
+  if (Role.ADMIN.match(value.toUpperCase())){
+    return Role.ADMIN;
+  }
+  if (Role.USER.match(value.toUpperCase())){
+    return Role.USER;
+  }
+
+  throw new Error("El rol no existe");
 }
 
 export function formatUserTag(username: string, role: Role): string {
   // "juan", ADMIN => "juan#ADMIN" (username trim, no vacío)
-  throw new Error("TODO");
+  
+  if(username.trim() == ""){
+    throw new Error("nombre vacio");
+  }
+  return username.trim()+"#"+role.toString();
 }
