@@ -9,13 +9,7 @@ import { Task } from "../models";
 export function pendingTasks(tasks: Task[]): Task[] {
   // retorna nuevas tareas con completed=false
 
-  const unCompleted: Task[] = [];
-  tasks.forEach(element => {
-    if(element.completed === false){
-      unCompleted.push(element)
-    }
-  });
-  return unCompleted;
+  return tasks.filter(task => !task.completed);
 }
 
 export function titlesSorted(tasks: Task[]): string[] {

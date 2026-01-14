@@ -10,7 +10,7 @@ export function normalizeBearer(authHeader: string): string {
     throw new Error();
   }
   
-  const palabras: Array<String> = authHeader.trim().split(/\s+/);
+  const palabras = authHeader.trim().split(/\s+/);
   if (palabras[0].toLowerCase() !== "bearer" || palabras.length !== 2) {
     throw new Error();
   }
