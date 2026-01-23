@@ -1,0 +1,32 @@
+<section class="card">
+    <h2>Login</h2>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <label>
+      <span>User</span>
+      <input class="input" formControlName="username" />
+    </label>
+
+    @if (form.controls.username.touched && form.controls.username.invalid) {
+    <div class="error">
+      El título es obligatorio y debe tener al menos 3 caracteres.
+    </div>
+    }
+
+    <label>
+      <span>Contraseña</span>
+      <input class="input" formControlName="password"  />
+    </label>
+    
+    @if (form.controls.password.touched && form.controls.password.invalid) {
+    <div class="error">
+      La descripcion debe tener al menos 5 caracteres.
+    </div>
+    }
+
+
+    <div class="row">
+      <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+      <button class="btn btn-primary" type="button" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</section>

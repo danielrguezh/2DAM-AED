@@ -1,0 +1,8 @@
+com/docencia/restejercicio/service/TareaService.class
+com/docencia/restejercicio/RestEjercicioApplication.class
+com/docencia/restejercicio/repository/TareasRepository.class
+com/docencia/restejercicio/config/CorsConfig.class
+com/docencia/restejercicio/config/CorsConfig$1.class
+com/docencia/restejercicio/model/Tarea.class
+com/docencia/restejercicio/common/ApiRestController.class
+com/docencia/restejercicio/controller/TaskController.class

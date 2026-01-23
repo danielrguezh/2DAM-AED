@@ -1,0 +1,68 @@
+/* Fondo general y tipografía */
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #ffffff; /* fondo blanco */
+    color: #333;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  
+  .card {
+    background: #f5f5f5; /* gris muy claro */
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  
+  .row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  /* Botones */
+  .btn {
+    border: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary {
+    background: #4a90e2; /* azul medio */
+    color: white;
+  }
+  
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid #4a90e2;
+    color: #4a90e2;
+  }
+  
+  .btn-ghost:hover {
+    background: #70b7ff; /* azul claro */
+    color: white;
+  }
+  
+  /* Inputs */
+  .input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Errores */
+  .error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 6px;
+    text-decoration: underline;
+  }
+  

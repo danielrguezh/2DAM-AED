@@ -1,0 +1,18 @@
+form {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  
+  label {
+    display: grid;
+    gap: 6px;
+    margin-right: 15px;
+  }
+  
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  

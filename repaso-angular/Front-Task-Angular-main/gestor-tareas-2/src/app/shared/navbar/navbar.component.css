@@ -1,0 +1,44 @@
+.nav {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #607d8b; /* gris azulado suave */
+  border-bottom: 1px solid #eee;
+  align-items: center; /* centra verticalmente links y botón */
+}
+
+.nav a {
+  text-decoration: none;
+  color: #ffffff; /* links normales */
+  padding: 8px 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav a:hover {
+  background: #70b7ff; /* azul suave al pasar el mouse */
+  color: #fff;
+}
+
+.nav a.active {
+  background: #4a90e2; /* azul moderado para activo */
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Estilo para el botón Cerrar Sesion */
+.nav .btn-cancel {
+  margin-left: auto; /* empuja el botón al final de la barra */
+  padding: 8px 16px;
+  background-color: #e74c3c; /* rojo para acción de cierre */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.nav .btn-cancel:hover {
+  background-color: #c0392b; /* rojo más oscuro al pasar el mouse */
+  transform: scale(1.05);    /* pequeño efecto de “pop” */
+}

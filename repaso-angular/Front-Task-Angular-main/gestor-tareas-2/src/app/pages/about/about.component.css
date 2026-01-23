@@ -1,0 +1,42 @@
+/* Card general */
+.card {
+    background: #f5f5f5; /* gris muy claro */
+    border-radius: 12px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  /* Título principal */
+  .card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  
+  /* Párrafos */
+  .card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #555;
+  }
+  
+  /* Lista de funciones */
+  .card ul {
+    padding-left: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .card ul li {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    color: #444;
+  }
+  
+  /* Opcional: resaltar palabras clave */
+  .card strong {
+    color: #4a90e2; /* azul coherente con botones */
+  }
+  
