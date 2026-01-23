@@ -1,0 +1,31 @@
+<section class="login-container">
+  <div class="login-card">
+    <h1>Login</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>
+        Usuario
+        <input class="input" formControlName="username" />
+        <div class="error-message">
+          <span *ngIf="form.controls.username.touched && form.controls.username.invalid">
+            El usuario es obligatorio
+          </span>
+        </div>
+      </label>
+
+      <label>
+        Contraseña
+        <input type="password" class="input" formControlName="password" />
+        <div class="error-message">
+          <span *ngIf="form.controls.password.touched && form.controls.password.invalid">
+            La contraseña es obligatoria
+          </span>
+        </div>
+      </label>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+  </div>
+</section>

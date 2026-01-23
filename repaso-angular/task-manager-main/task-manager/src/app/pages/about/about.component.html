@@ -1,0 +1,28 @@
+<section class="card about-container">
+  <h2>Acerca de esta aplicación</h2>
+
+  <strong>
+    Bienvenido/a a esta app de gestión de tareas, creada como práctica de Angular.
+  </strong>
+
+  <ul class="about-list">
+    <li>Routing entre varias páginas</li>
+    <li>Formulario reactivo con validación (crear y eliminar tareas)</li>
+    <li>Servicios e inyección de dependencias</li>
+  </ul>
+
+  <strong>Esta aplicación permite:</strong>
+
+  <ul class="about-list">
+    <li>Agregar nuevas tareas con título, descripción y estado de completada</li>
+    <li>Eliminar tareas existentes</li>
+    <li>Navegar fácilmente entre páginas con la barra de navegación</li>
+  </ul>
+
+  <p class="author">Autor: <strong>Eduardo González Expósito</strong></p>
+
+  <div class="row">
+    <a class="btn btn-primary" routerLink="/" (click)="navigate('/')">Volver al inicio</a>
+    <a class="btn btn-ghost" routerLink="/tareas" (click)="navigate('/tareas')">Ver tareas</a>
+  </div>
+</section>

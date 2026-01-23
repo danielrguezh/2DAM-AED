@@ -1,0 +1,31 @@
+<section class="card">
+  <h2>Lista de tareas</h2>
+
+  @if (tasks.length === 0) {
+    <p>No hay tareas todavía.</p>
+  } @else {
+    <ul class="list">
+      @for (t of tasks; track t.id) {
+        <li class="item">
+          <div class="content">
+            <strong>{{ t.title }}</strong>
+            @if (t.description) {
+              <div class="muted">{{ t.description }}</div>
+            }
+          </div>
+
+          <div class="actions">
+            <input
+              type="checkbox"
+              [checked]="t.completed"
+              (change)="toggleCompleted(t)"
+            />
+            <button class="btn btn-ghost" (click)="remove(t.id)">
+              Eliminar
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</section>

@@ -1,0 +1,42 @@
+.about-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.about-container h2 {
+  margin-bottom: 24px;
+  color: #4f46e5;
+  font-size: 1.8rem;
+}
+
+.about-container p {
+  margin-bottom: 16px;
+  line-height: 1.8;
+  color: #1f2937;
+}
+
+.about-list {
+  list-style: disc;
+  text-align: left;
+  margin: 12px auto;
+  padding-left: 1.4em;
+  max-width: 500px;
+}
+
+.about-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.author {
+  margin-top: 24px;
+  font-size: 1rem;
+}
+
+.row {
+  justify-content: center;
+  margin-top: 24px;
+  gap: 12px;
+}
